@@ -1,1 +1,16 @@
 # naquadah
+A minetest mod that adds Naquadah from Stargate
+
+(WIP)
+
+Firstly, this is a going to be pretty rough, as I am learning lua and minetest
+modding as I go along.  Don't expect it to work to well at first.
+
+This mod will add naquadah to minetest, and a few items to go with it.
+
+Planned items:
+	Tokra crystals - create specific shape and size rooms
+	Naquadah generator - portable short-term use generator
+
+
+
