@@ -248,7 +248,7 @@ minetest.register_tool("naquadah:tokra_crystal_1", {
 
 minetest.register_tool("naquadah:tokra_crystal_2", {
         description = "Tokra Excavation Crystal (5x3x5 room)",
-	inventory_image = "tokra_crystal_1.png",
+	inventory_image = "tokra_crystal_2.png",
 	on_use = function(itemstack, user, pointed_thing)
 	      tokra_init_dig(itemstack, user, pointed_thing, 2)
 	      return itemstack
