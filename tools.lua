@@ -54,7 +54,14 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 	    tokra_dig(pos,user)
 	    pos.y=pos.y-1
 	    tokra_dig(pos,user)
+	    pos.y=pos.y+2
+	    pos.x=pos.x-1
+	    tokra_dig(pos,user)
+	    pos.y=pos.y+1
+	    minetest.place_node(pos, {name="blox:glowstone"})
+	    --minetest.place_node(pos, {name="default:dirt"})
 	    return
+	    
 	 end
 	 if crystal_type == 2 then
 	     --orig_pos = pos
@@ -78,6 +85,11 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 		    end
 		end
 	    end
+	    pos.y=pos.y+2
+	    pos.x=pos.x+2
+	    tokra_dig(pos,user)
+	    pos.y=pos.y+1
+	    minetest.place_node(pos, {name="blox:glowstone"})
 	end
 	return
       end
@@ -95,6 +107,11 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
              tokra_dig(pos,user)
              pos.y=pos.y-1
              tokra_dig(pos,user)
+	     pos.y=pos.y+2
+	     pos.x=pos.x+1
+	     tokra_dig(pos,user)
+	     pos.y=pos.y+1
+	     minetest.place_node(pos, {name="blox:glowstone"})	    
 	 return
          end
 	 if crystal_type == 2 then
@@ -115,8 +132,13 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 			pos.z = temp_z
 		    end
 		end
-	     end 													     
-	 end
+	     end 					
+            pos.y=pos.y+2
+	    pos.x=pos.x-2
+	    tokra_dig(pos,user)
+	    pos.y=pos.y+1
+	    minetest.place_node(pos, {name="blox:glowstone"})
+	end
 	return
       end
       if direction == 3 then
@@ -132,6 +154,11 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 	    tokra_dig(pos,user)
 	    pos.y=pos.y-1
 	    tokra_dig(pos,user)
+	    pos.y=pos.y+2
+	    pos.z=pos.z-1
+	    tokra_dig(pos,user)
+	    pos.y=pos.y+1
+	    minetest.place_node(pos, {name="blox:glowstone"})	    
 	    return
 	 end
       
@@ -153,7 +180,13 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 			pos.z = temp_z
 		    end
 		end
-	     end 
+	     end
+            pos.y=pos.y+2
+            pos.z=pos.z+2
+            tokra_dig(pos,user)
+            pos.y=pos.y+1
+            minetest.place_node(pos, {name="blox:glowstone"})
+							    
 	 end
 	 return													     
 	 end
@@ -172,7 +205,12 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 	    tokra_dig(pos,user)
 	    pos.y=pos.y-1
 	    tokra_dig(pos,user)
-            return
+	    pos.y=pos.y+2
+	    pos.z=pos.z+1
+	    tokra_dig(pos,user)
+	    pos.y=pos.y+1
+	    minetest.place_node(pos, {name="blox:glowstone"})
+	    return
 	 end
       
 	 if crystal_type == 2 then
@@ -196,7 +234,12 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 		    end
 		end
 	     end
-	  													     
+            pos.y=pos.y+2
+            pos.z=pos.z-2
+            tokra_dig(pos,user)
+            pos.y=pos.y+1
+            minetest.place_node(pos, {name="blox:glowstone"})
+							    
 	 end
 	 end
 end
