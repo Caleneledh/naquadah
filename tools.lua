@@ -22,6 +22,7 @@ local function tokra_dig(pos, user)
 end
 
 local function tokra_execute_dig(pos,direction,crystal_type,user)
+   print("DIRECTION: "..direction)
    if direction == 1 then
       if crystal_type == 1 then
 	 tokra_dig(pos,user)
@@ -64,6 +65,25 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 	 tokra_dig(pos,user)
 	 pos.y=pos.y+1
 	 minetest.place_node(pos, {name="blox:glowstone"})
+	 return
+      end
+      if crystal_type == 3 then
+	 for y=-1,9 do
+	    for z=-5,5 do
+	       for x=0,10 do
+                  local temp_x = pos.x
+		  local temp_y = pos.y
+		  local temp_z = pos.z
+		  pos.x = pos.x + x
+		  pos.y = pos.y + y
+		  pos.z = pos.z + z
+		  tokra_dig(pos,user)
+		  pos.x = temp_x
+		  pos.y = temp_y
+		  pos.z = temp_z
+	       end
+	    end
+	 end
 	 return
       end
    end
@@ -109,8 +129,27 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 	 tokra_dig(pos,user)
 	 pos.y=pos.y+1
 	 minetest.place_node(pos, {name="blox:glowstone"})
+	 return
       end
-      return
+      if crystal_type == 3 then
+	 for y=-1,9 do
+	    for z=-5,5 do
+	       for x=0,-10,-1 do
+		  local temp_x = pos.x
+		  local temp_y = pos.y
+		  local temp_z = pos.z
+		  pos.x = pos.x + x
+		  pos.y = pos.y + y
+		  pos.z = pos.z + z
+		  tokra_dig(pos,user)
+		  pos.x = temp_x
+		  pos.y = temp_y
+		  pos.z = temp_z
+	       end
+	    end
+	 end
+	 return
+      end
    end
    if direction == 3 then
       if crystal_type == 1 then
@@ -156,6 +195,25 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 	 minetest.place_node(pos, {name="blox:glowstone"})
 	 return
       end
+      if crystal_type == 3 then
+	 for y=-1,9 do
+	    for z=0,10 do
+	       for x=-5,5 do
+		  local temp_x = pos.x
+		  local temp_y = pos.y
+		  local temp_z = pos.z
+		  pos.x = pos.x + x
+		  pos.y = pos.y + y
+		  pos.z = pos.z + z
+		  tokra_dig(pos,user)
+		  pos.x = temp_x
+		  pos.y = temp_y
+		  pos.z = temp_z
+	       end
+	    end
+	 end
+	 return
+      end
    end
    if direction == 4 then
       if crystal_type == 1 then
@@ -199,6 +257,26 @@ local function tokra_execute_dig(pos,direction,crystal_type,user)
 	 tokra_dig(pos,user)
 	 pos.y=pos.y+1
 	 minetest.place_node(pos, {name="blox:glowstone"})
+	 return
+      end
+      if crystal_type == 3 then
+	 for y=-1,9 do
+	    for z=0,-10,-1 do
+	       for x=-5,5 do
+		  local temp_x = pos.x
+		  local temp_y = pos.y
+		  local temp_z = pos.z
+		  pos.x = pos.x + x
+		  pos.y = pos.y + y
+		  pos.z = pos.z + z
+		  tokra_dig(pos,user)
+		  pos.x = temp_x
+		  pos.y = temp_y
+		  pos.z = temp_z
+	       end
+	    end
+	 end
+	 return
       end
    end
 end
@@ -250,3 +328,11 @@ minetest.register_tool("naquadah:tokra_crystal_2", {
 			  end,
 })
 								
+minetest.register_tool("naquadah:tokra_crystal_3", {
+			  description = "Tokra Excavation Crystal (11x11x11 room)",
+			  inventory_image = "tokra_crystal_3.png",
+			  on_use = function(itemstack, user, pointed_thing)
+			     tokra_init_dig(itemstack, user, pointed_thing, 3)
+			     return itemstack
+			  end,
+})
